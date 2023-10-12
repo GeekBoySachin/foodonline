@@ -144,3 +144,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+#to make application accesible on wifi network
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.1.19']
