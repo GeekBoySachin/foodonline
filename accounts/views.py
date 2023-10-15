@@ -7,6 +7,7 @@ from .utils import *
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.core.exceptions import PermissionDenied
 from django.utils.http import urlsafe_base64_decode
+from vendor.models import Vendor
 
 #custom decorators
 #restrict vendor from accessing customer page
@@ -166,7 +167,7 @@ def custDashboard(request):
 @login_required(login_url='login')  #this send the user to login page if user is not logged in
 @user_passes_test(check_role_vendor)
 def vendorDashboard(request):
-    return render(request,'accounts/vendorDashboard.html')
+    return render(request,'accounts/vendorDashboard.html')  #using context processors
 
 def forgot_password(request):
     if request.method=="POST":
@@ -215,3 +216,5 @@ def reset_password(request):
             messages.error(request,"Passwords do not match!")
             return redirect("reset_password")
     return render(request,'accounts/reset_password.html')
+
+    
